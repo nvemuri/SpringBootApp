@@ -1,117 +1,151 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	  <title>Spring Boot - Angularjs Example</title>
-	  <meta charset="utf-8" />
-	  <meta name="viewport" content="width=device-width, initial-scale=1" />
-	  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-	  <script src="/js/controller.js"></script>
-	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-	  <link href="css/bootstrap.css" rel="stylesheet"/>
-      <link href="css/app.css" rel="stylesheet"/>
-	  
+<title>Spring Boot - Angularjs Example</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script src="/js/controller.js"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+<link href="css/bootstrap.css" rel="stylesheet" />
+<link href="css/app.css" rel="stylesheet" />
+
 </head>
 <body>
- 
-<div class="container" ng-app="app">
- 
-	<h3 style="color:blue">Http Angularjs With SpringBoot Example</h3>
-	
-	<div ng-controller="postcontroller">
-		<form ng-submit="submitForm()" name="myForm" class="form-horizontal">
-	                 <input type="hidden" ng-model="id" />
-	                <div class="row">
-	                    <div class="form-group col-md-12">
-	                        <label class="col-md-2 control-lable" for="uname">First Name</label>
-	                        <div class="col-md-7">
-	                            <input type="text" ng-model="firstname" id="uname" class="username form-control input-sm" placeholder="Enter your name" required ng-minlength="3"/>
-	                        </div>
-	                    </div>
-	                </div>
 
-	                <div class="row">
-	                    <div class="form-group col-md-12">
-	                        <label class="col-md-2 control-lable" for="uname">Last Name</label>
-	                        <div class="col-md-7">
-	                            <input type="text" ng-model="lastname" id="uname" class="username form-control input-sm" placeholder="Enter your name" required ng-minlength="3"/>
-	                        </div>
-	                    </div>
-	                </div>
-					
-					<div class="row">
-	                    <div class="form-group col-md-12">
-	                        <label class="col-md-2 control-lable" for="uname">Mail-ID</label>
-	                        <div class="col-md-7">
-	                            <input type="text" ng-model="mail" id="uname" class="username form-control input-sm" placeholder="Enter your name" required ng-minlength="3"/>
-	                        </div>
-	                    </div>
-	                </div>
-						
-	                <div class="row">
-	                    <div class="form-group col-md-12">
-	                        <label class="col-md-2 control-lable" for="salary">Mobile</label>
-	                        <div class="col-md-7">
-	                            <input type="text" ng-model="mobileNo" id="salary" class="form-control input-sm" placeholder="Enter your Salary." required ng-pattern="ctrl.onlyNumbers"/>
-	                        </div>
-	                    </div>
-	                </div>
-					
-					<div class="row">
-	                    <div class="form-group col-md-12">
-	                        <label class="col-md-2 control-lable" for="uname">Address</label>
-	                        <div class="col-md-7">
-	                            <input type="text" ng-model="address" id="uname" class="username form-control input-sm" placeholder="Enter your name" required ng-minlength="3"/>
-	                        </div>
-	                    </div>
-	                </div>
-			<div class="form-group">
-				<div class="col-sm-offset-2 col-sm-10">
-					<button type="submit" class="btn btn-default">Submit</button>
+	<div class="container" ng-app="app">
+
+		<h3 style="color: blue">Http Angularjs With SpringBoot Example</h3>
+
+		<div ng-controller="postcontroller">
+			<form ng-submit="submitForm()" name="myForm" class="form-horizontal">
+				
+				<div class="row">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-lable" for="id">ID</label>
+						<div class="col-md-7">
+							<input type="text" ng-model="id" id="id"
+								class="username form-control input-sm"
+								placeholder="Enter your id" required/>
+						</div>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-lable" for="uname">First
+							Name</label>
+						<div class="col-md-7">
+							<input type="text" ng-model="firstname" id="uname"
+								class="username form-control input-sm"
+								placeholder="Enter your name" required ng-minlength="3" />
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-lable" for="uname">Last
+							Name</label>
+						<div class="col-md-7">
+							<input type="text" ng-model="lastname" id="uname"
+								class="username form-control input-sm"
+								placeholder="Enter your name" required ng-minlength="3" />
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-lable" for="uname">Mail-ID</label>
+						<div class="col-md-7">
+							<input type="text" ng-model="mail" id="uname"
+								class="username form-control input-sm"
+								placeholder="Enter your name" required ng-minlength="3" />
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-lable" for="salary">Mobile</label>
+						<div class="col-md-7">
+							<input type="text" ng-model="mobileNo" id="salary"
+								class="form-control input-sm" placeholder="Enter your Salary."
+								required ng-pattern="ctrl.onlyNumbers" />
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-lable" for="uname">Address</label>
+						<div class="col-md-7">
+							<input type="text" ng-model="address" id="uname"
+								class="username form-control input-sm"
+								placeholder="Enter your name" required ng-minlength="3" />
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="form-actions floatRight">
+						<input type="submit" value="Save"
+							class="btn btn-primary btn-sm"
+							ng-disabled="myForm.$invalid || myForm.$pristine">
+						<button type="button" ng-click="ctrl.reset()"
+							class="btn btn-warning btn-sm" ng-disabled="myForm.$pristine">Reset
+							Form</button>
+					</div>
+				</div>
+			</form>
+		</div>
+
+
+		<div class="col-sm-offset-2 col-sm-10" ng-controller="getcontroller">
+			<button id="btn-id" type="button" class="btn btn-primary"
+				ng-click="getfunction()">Get All Customers</button>
+
+			<div class="panel-heading">
+				<span class="lead">List of Users </span>
+			</div>
+			<div class="panel-body">
+				<div class="table-responsive">
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>FirstName</th>
+								<th>LastName</th>
+								<th>Mail</th>
+								<th>Mobile</th>
+								<th>address</th>
+								<th width="100"></th>
+								<th width="100"></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="cust in response">
+								<td>{{cust.firstname}}</td>
+								<td>{{cust.lastname}}</td>
+								<td>{{cust.mail}}</td>
+								<td>{{cust.mobileNo}}</td>
+								<td>{{cust.address}}</td>
+								<td>
+								<div class="col-sm-offset-2 col-sm-10" ng-controller="updatecontroller">
+								<button type="button" ng-click="editCustomer(cust.id)"
+										class="btn btn-success custom-width">Edit</button>
+								</div>		
+										</td>
+								<td><button type="button" ng-click="removeUser(cust.id)"
+										class="btn btn-danger custom-width">Remove</button></td>
+							</tr>
+						</tbody>
+					</table>
 				</div>
 			</div>
-	            </form>
- 
-		<!-- <div class="col-sm-offset-2 col-sm-10">
-			<p>{{postResultMessage}}</p>
-		</div> -->
-	</div>
-	
-	<div class="col-sm-offset-2 col-sm-10" ng-controller="getcontroller">
-		<button id="btn-id" type="button" class="btn btn-primary" ng-click="getfunction()">Get All Customers</button>
-		
-		 <div class="panel-heading"><span class="lead">List of Users </span></div>
-		<div class="panel-body">
-			<div class="table-responsive">
-		        <table class="table table-hover">
-		            <thead>
-		            <tr>
-		                <th>FirstName</th>
-		                <th>LastName</th>
-		                <th>Mail</th>
-		                <th>Mobile</th>
-		                <th>address</th>
-		                <th width="100"></th>
-		                <th width="100"></th>
-		            </tr>
-		            </thead>
-		            <tbody>
-		            <tr ng-repeat="cust in response">
-		                <td>{{cust.firstname}}</td>
-		                <td>{{cust.lastname}}</td>
-		                <td>{{cust.mail}}</td>
-		                <td>{{cust.mobileNo}}</td>
-		                <td>{{cust.address}}</td>
-		                <td><button type="button" ng-click="editUser(cust.id)" class="btn btn-success custom-width">Edit</button></td>
-		                <td><button type="button" ng-click="removeUser(cust.id)" class="btn btn-danger custom-width">Remove</button></td>
-		            </tr>
-		            </tbody>
-		        </table>		
-			</div>
 		</div>
-    </div>
-        
 	</div>
-	
-</div>
 </body>
 </html>

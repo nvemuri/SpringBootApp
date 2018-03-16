@@ -2,7 +2,7 @@ var app = angular.module('app', []);
 
 app.controller('postcontroller', function($scope, $http, $location) {
 	$scope.submitForm = function(){
-		var url = $location.absUrl() + "/postcustomer";
+		var url = $location.absUrl() + "postcustomer";
 		
 		var config = {
                 headers : {
