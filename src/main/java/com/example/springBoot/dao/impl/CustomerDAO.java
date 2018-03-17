@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 import com.example.springBoot.dao.ICustomerDAO;
 import com.example.springBoot.dao.data.Database;
 import com.example.springBoot.domain.Customer;
-import com.example.springBoot.domain.User;
 
 @Component
 public class CustomerDAO implements ICustomerDAO{

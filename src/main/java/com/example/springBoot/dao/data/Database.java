@@ -25,7 +25,7 @@ public class Database {
 	}
 
 	public void addCustomer(Customer customer) {
-		if(customers.get(customer.getId()) != null)
+		if(customers.get(customer.getId()) == null)
 			customers.put(customer.getId(), customer);
 		else 
 			throw new IllegalArgumentException("Customer already exists with id="+customer.getId());
@@ -37,7 +37,8 @@ public class Database {
 		return customers.get(id);
 	}
 	public void updateCustomerr(String id, Customer customer) {
-		
+		System.out.println("updateCustomerr id="+id);
+		System.out.println(customers.get(id));
 		if(customers.get(id) != null) {
 			customers.put(id, customer);
 			System.out.println("Update customer...");
