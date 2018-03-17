@@ -30,7 +30,6 @@ app.controller('postcontroller', function($scope, $http, $location) {
 		$scope.address = "";
 		$scope.mail = "";
 		$scope.id = "";
-		
 	}
 });
  
@@ -51,6 +50,7 @@ app.controller('getcontroller', function($scope, $http, $location) {
 	
 	$scope.cancleRow = function(cust) {
 		cust.editMode = false;
+		$scope.getfunction();
 	}
 	
 	$scope.updateCustomer = function(cust, id){
