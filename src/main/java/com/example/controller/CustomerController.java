@@ -2,6 +2,8 @@ package com.example.controller;
 
 import java.util.List;
 
+import javax.websocket.server.PathParam;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -54,8 +56,8 @@ public class CustomerController {
 	}
 	
 	//code for delete customer
-	@RequestMapping(value = "/removecustomer", method = RequestMethod.DELETE)
-	public String deleteCustomer(@RequestParam String id){
+	@RequestMapping(value = "/removecustomer/{id}", method = RequestMethod.DELETE)
+	public String deleteCustomer(@PathParam("id") String id){
 		customerService.deleteCustomer(id);
 		return "Customer deleted Sucessfully";
 	}

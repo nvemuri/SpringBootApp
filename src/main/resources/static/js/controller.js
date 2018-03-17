@@ -80,7 +80,7 @@ app.controller('getcontroller', function($scope, $http, $location) {
 	}
 	
 	$scope.removeCustomer = function(id){
-		var url = $location.absUrl() + "removecustomer";
+		var url = $location.absUrl() + "removecustomer/"+id;
 		
 		var config = {
                 headers : {
@@ -88,7 +88,6 @@ app.controller('getcontroller', function($scope, $http, $location) {
                 }
         }
 		var data = {
-            id:  id
         };
 		
 		$http.delete(url, data, config).then(function (response) {
