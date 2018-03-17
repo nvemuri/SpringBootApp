@@ -14,10 +14,10 @@ public class Database {
 	List<Customer> customers = new ArrayList<Customer>();
 	
 	public List<Customer> findAllUsers() {
-		customers.add(new Customer("1","temp", "temp", "temp@gmail.com", "4343654", "temp"));
-		customers.add(new Customer("2","temp", "temp", "temp@gmail.com", "4343654", "temp"));
-		customers.add(new Customer("3","temp", "temp", "temp@gmail.com", "4343654", "temp"));
-		customers.add(new Customer("4","temp", "temp", "temp@gmail.com", "4343654", "temp"));
+		customers.add(new Customer("1","temp1", "temp1l", "temp1@gmail.com", "1343654", "1Atemp"));
+		customers.add(new Customer("2","temp2", "temp2l", "temp2@gmail.com", "2343654", "2Atemp"));
+		customers.add(new Customer("3","temp3", "temp3l", "temp3@gmail.com", "3343654", "3Atemp"));
+		customers.add(new Customer("4","temp4", "temp4l", "temp4@gmail.com", "4343654", "4Atemp"));
 				
 		return customers;
 	}

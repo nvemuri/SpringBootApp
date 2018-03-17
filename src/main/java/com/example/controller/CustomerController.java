@@ -48,13 +48,13 @@ public class CustomerController {
 	
 	//code for update customer
 	@RequestMapping(value="/updatecustomer", method=RequestMethod.PUT)
-	public String updateCustomer(@RequestParam String id, @RequestBody Customer customer){
-		customerService.updateCustomer(id, customer);
+	public String updateCustomer(@RequestBody Customer customer){
+		customerService.updateCustomer(customer.getId(), customer);
 		return "Customer updated Sucessfully!";
 	}
 	
 	//code for delete customer
-	@RequestMapping(value = "/getcustomer", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/removecustomer", method = RequestMethod.DELETE)
 	public String deleteCustomer(@RequestParam String id){
 		customerService.deleteCustomer(id);
 		return "Customer deleted Sucessfully";

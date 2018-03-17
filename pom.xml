@@ -46,7 +46,12 @@
 			<version>1.9.6</version>
 		</dependency>
 		
-		
+		<!-- Added for reloading classes when developers make changes while running 
+			the application -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+		</dependency>		
 		
 			<!-- Unit Test Dependencies -->
 			<!-- <dependency>

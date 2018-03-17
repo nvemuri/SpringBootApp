@@ -44,10 +44,18 @@ app.controller('getcontroller', function($scope, $http, $location) {
 			$scope.postResultMessage = "Error with status: " +  response.statusText;
 		});
 	}
-});
-
-app.controller('updatecontroller', function($scope, $http, $location) {
-	$scope.editCustomer = function(id){
+	
+	$scope.editRow = function(cust) {
+		cust.editMode = true;
+	}
+	
+	$scope.cancleRow = function(cust) {
+		cust.editMode = false;
+	}
+	
+	$scope.updateCustomer = function(cust, id){
+		cust.editMode = false;
+		
 		var url = $location.absUrl() + "updatecustomer";
 		
 		var config = {
@@ -56,12 +64,12 @@ app.controller('updatecontroller', function($scope, $http, $location) {
                 }
         }
 		var data = {
-            firstname: $scope.firstname,
-            lastname: $scope.lastname,
-            mail:$scope.mail,
-            mobileNo:$scope.mobileNo,
-            address:$scope.address,
-            id:$scope.id
+            firstname: cust.firstname,
+            lastname:  cust.lastname,
+            mail:  cust.mail,
+            mobileNo:  cust.mobileNo,
+            address:  cust.address,
+            id:  cust.id
         };
 		
 		$http.put(url, data, config).then(function (response) {
@@ -69,12 +77,26 @@ app.controller('updatecontroller', function($scope, $http, $location) {
 		}, function error(response) {
 			$scope.postResultMessage = "Error with status: " +  response.statusText;
 		});
+	}
+	
+	$scope.removeCustomer = function(id){
+		var url = $location.absUrl() + "removecustomer";
 		
-		$scope.firstname = "";
-		$scope.lastname = "";
-		$scope.mobileNo ="";
-		$scope.address = "";
-		$scope.mail = "";
-		$scope.id = "";
+		var config = {
+                headers : {
+                    'Accept': 'application/json'
+                }
+        }
+		var data = {
+            id:  id
+        };
+		
+		$http.delete(url, data, config).then(function (response) {
+			$scope.postResultMessage = response.data;
+		}, function error(response) {
+			$scope.postResultMessage = "Error with status: " +  response.statusText;
+		});
+		
+		$scope.getfunction();
 	}
 });
