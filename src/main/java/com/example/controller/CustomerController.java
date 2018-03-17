@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.springBoot.domain.Customer;
-import com.example.springBoot.service.ICustomerService;
+import com.example.springBoot.service.impl.CustomerService;
 import com.example.springBoot.util.ResourceNotFoundException;
 
 
@@ -19,7 +19,7 @@ import com.example.springBoot.util.ResourceNotFoundException;
 public class CustomerController {
 	
 	@Autowired
-	private ICustomerService customerService;
+	private CustomerService customerService;
 	
 	//code for to get all customers
 	@RequestMapping(value = "/getallcustomer", method = RequestMethod.GET)
