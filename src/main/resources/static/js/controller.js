@@ -2,7 +2,7 @@ var app = angular.module('app', []);
 
 app.controller('postcontroller', function($scope, $http, $location) {
 	$scope.submitForm = function(){
-		var url = $location.absUrl() + "postcustomer";
+		var url = $location.absUrl() + "customers";
 		
 		var config = {
                 headers : {
@@ -36,7 +36,7 @@ app.controller('postcontroller', function($scope, $http, $location) {
  
 app.controller('getcontroller', function($scope, $http, $location) {
 	$scope.getfunction = function(){
-		var url = $location.absUrl() + "getallcustomer";
+		var url = $location.absUrl() + "customers";
 		
 		$http.get(url).then(function (response) {
 			$scope.response = response.data
@@ -56,7 +56,7 @@ app.controller('getcontroller', function($scope, $http, $location) {
 	$scope.updateCustomer = function(cust, id){
 		cust.editMode = false;
 		
-		var url = $location.absUrl() + "updatecustomer";
+		var url = $location.absUrl() + "customers/"+id;
 		
 		var config = {
                 headers : {
@@ -80,7 +80,7 @@ app.controller('getcontroller', function($scope, $http, $location) {
 	}
 	
 	$scope.removeCustomer = function(id){
-		var url = $location.absUrl() + "removecustomer/"+id;
+		var url = $location.absUrl() + "customers/"+id;
 		
 		var config = {
                 headers : {
