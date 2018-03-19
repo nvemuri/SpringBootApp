@@ -31,17 +31,17 @@ app.controller('postcontroller', function($rootScope, $scope, $http, $location) 
 		$scope.mail = "";
 		$scope.id = "";
 		
-		//to load the table after adding new customer details
+		// to load the table after adding new customer details
 		$rootScope.$broadcast('topic', 'some message message');
 	}
 });
  
 app.controller('getcontroller', function($scope, $http, $location) {
 	
-	//to load the table after adding new customer details
+	// to load the table after adding new customer details
     $scope.$on('topic', function (event, arg) { 
-	    //$scope.receiver = 'got your ' + arg;
-    	//alert(arg);
+	    // $scope.receiver = 'got your ' + arg;
+    	// alert(arg);
 	  $scope.getfunction();
 	});
     
@@ -53,6 +53,25 @@ app.controller('getcontroller', function($scope, $http, $location) {
 		}, function error(response) {
 			$scope.postResultMessage = "Error with status: " +  response.statusText;
 		});
+	}
+	
+	$scope.searchCustomers = function() {
+		var url = $location.absUrl() + "searchCustomer";
+ 
+		var config = {
+				headers : {
+                    'Accept': 'application/json'
+                },
+		
+                params: { 'name' : $scope.searchText }
+		}
+ 
+		$http.get(url, config).then(function(response) {
+			$scope.response = response.data
+		}, function(response) {
+			$scope.postResultMessage = "Fail!";
+		});
+ 
 	}
 	
 	$scope.editRow = function(cust) {

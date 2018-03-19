@@ -10,4 +10,5 @@ public interface ICustomerDAO {
 	public Customer getCustomer(String id);
 	public void updateCustomerr(String id, Customer customer);
 	public void deleteCustomer(String id);
+	public Customer searchCustomer(String name);
 }

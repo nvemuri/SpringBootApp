@@ -11,4 +11,5 @@ public interface ICustomerService {
 	public Customer getCustomer(String id);
 	public void updateCustomer(String id, Customer customer);
 	public void deleteCustomer(String id);
+	public Customer searchCustomer(String name);
 }

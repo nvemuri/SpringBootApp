@@ -40,5 +40,10 @@ public class CustomerService implements ICustomerService{
 		customerDAO.deleteCustomer(id);		
 	}
 
+	@Override
+	public Customer searchCustomer(String name) {
+		return customerDAO.searchCustomer(name);
+	}
+
 	
 }

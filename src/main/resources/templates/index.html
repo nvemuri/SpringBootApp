@@ -18,7 +18,7 @@
 
 	<div class="container" ng-app="app">
 
-		<h3 style="color: blue">Http Angularjs With SpringBoot Example</h3>
+		<h3 style="color: blue">Angularjs With SpringBoot Example</h3>
 
 		<div ng-controller="postcontroller">
 			<form ng-submit="submitForm()" name="myForm" class="form-horizontal">
@@ -104,9 +104,18 @@
 		</div>
 
 
-		<div class="col-sm-offset-2 col-sm-10" ng-controller="getcontroller" ng-init="getfunction()">
+		<div class="col-sm-offset-2 col-sm-10" ng-controller="getcontroller"
+			ng-init="getfunction()">
 			<button id="btn-id" type="button" class="btn btn-primary"
 				ng-click="getfunction()">Get All Customers</button>
+
+			<div class="row">
+				<div class="form-actions floatRight">
+					<input type="text" class="form-control" ng-model="searchText" required/><br />
+					<button type="button" ng-click="searchCustomers()"
+						class="btn btn-warning btn-sm" ng-disabled="text.$invalid">Search Customers</button>
+				</div>
+			</div>
 
 			<div class="panel-heading">
 				<span class="lead">List of Users </span>
@@ -151,7 +160,7 @@
 										<button type="button" ng-click="cancleRow(cust)"
 											class="btn btn-success custom-width">Cancel</button>
 										<button type="button" ng-click="updateCustomer(cust, cust.id)"
-											class="btn btn-success custom-width">Update</button>	
+											class="btn btn-success custom-width">Update</button>
 								</span> <span ng-hide="cust.editMode">
 										<button type="button" ng-click="editRow(cust)"
 											class="btn btn-success custom-width">Edit</button>
@@ -160,8 +169,8 @@
 										<button type="button" class="btn btn-disable custom-width">Remove</button>
 								</span> <span ng-hide="cust.editMode">
 										<button type="button" ng-click="removeCustomer(cust.id)"
-											class="btn btn-danger custom-width">Remove</button></td>
-								</span>
+											class="btn btn-danger custom-width">Remove</button>
+								</span></td>
 							</tr>
 						</tbody>
 					</table>

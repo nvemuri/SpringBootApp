@@ -30,12 +30,12 @@ public class CustomerDAOTest {
 	public void testRetrieveCustomer() {
 		List<Customer> customers = customerDAO.findAllUsers();
 		System.out.println(customers);
-		assertEquals(4, customers.size());
+		assertEquals(1, customers.size());
 	}
 	
 	@Test
 	public void testAddCustomer() {
-		customerDAO.addCustomer(new Customer("1", "firstname", "lastname", "mail", "45435", "address"));
+		customerDAO.addCustomer(new Customer("5", "firstname", "lastname", "mail", "45435", "address"));
 		assertTrue("Customer not Added", true);
 	}
 

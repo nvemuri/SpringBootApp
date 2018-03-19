@@ -40,5 +40,10 @@ public class CustomerDAO implements ICustomerDAO{
 		database.deleteCustomer(id);
 	}
 
+	@Override
+	public Customer searchCustomer(String name) {
+		return database.searchCustomer(name);
+	}
+
 	
 }

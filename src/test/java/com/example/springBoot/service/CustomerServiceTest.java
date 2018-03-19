@@ -5,6 +5,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import java.util.List;
+import java.util.Random;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -27,15 +28,17 @@ public class CustomerServiceTest {
 	CustomerService customerService;
 	
 	@Test
-	public void testRetrieveTodosRelatedToSpring() {
+	public void testRetrieveCustomerRelatedToSpring() {
 		List<Customer> customers = customerService.findAllUsers();
 		System.out.println(customers);
-		assertEquals(8, customers.size());
+		assertEquals(1, customers.size());
 	}
 
 	@Test
-	public void testAddCutomer() {
-		Customer customer = new Customer("5","temp", "temp", "temp@gmail.com", "4343654", "temp");
+	public void testAddCustomer() {
+		
+		Random r = new Random();
+		Customer customer = new Customer(r.nextInt((10 - 1) + 1) + 1+"","temp", "temp", "temp@gmail.com", "4343654", "temp");
 		customerService.addCustomer(customer);
 		assertTrue(true);
 		customerService.deleteCustomer("5");
@@ -54,7 +57,7 @@ public class CustomerServiceTest {
 		customerService.deleteCustomer("1");
 		List<Customer> customers = customerService.findAllUsers();
 		System.out.println(customers);
-		assertEquals(4, customers.size());
+		assertEquals(1, customers.size());
 	}
 	
 	@Test

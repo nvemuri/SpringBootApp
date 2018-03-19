@@ -1,8 +1,12 @@
 package com.example.springBoot.dao.data;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Component;
 
@@ -53,6 +57,15 @@ public class Database {
 	}
 	
 	public boolean containsCustomer(final List<Customer> list, final String id){
-	    return list.stream().anyMatch(w -> w.getId().equals(id));
+	    return list.stream().anyMatch(customer -> customer.getId().equals(id));
+	}
+	
+	public Customer searchCustomer(String name){
+		
+		Customer customer = null;
+		if(customers.get(name) != null){
+			 customer = customers.get(name);
+		}
+		return customer;
 	}
 }
