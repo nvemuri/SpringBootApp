@@ -1,8 +1,8 @@
 var app = angular.module('app', []);
 
-app.controller('postcontroller', function($scope, $http, $location) {
+app.controller('postcontroller', function($rootScope, $scope, $http, $location) {
 	$scope.submitForm = function(){
-		var url = $location.absUrl() + "customers";
+		var url = "/customers";
 		
 		var config = {
                 headers : {
@@ -30,12 +30,23 @@ app.controller('postcontroller', function($scope, $http, $location) {
 		$scope.address = "";
 		$scope.mail = "";
 		$scope.id = "";
+		
+		//to load the table after adding new customer details
+		$rootScope.$broadcast('topic', 'some message message');
 	}
 });
  
 app.controller('getcontroller', function($scope, $http, $location) {
+	
+	//to load the table after adding new customer details
+    $scope.$on('topic', function (event, arg) { 
+	    //$scope.receiver = 'got your ' + arg;
+    	//alert(arg);
+	  $scope.getfunction();
+	});
+    
 	$scope.getfunction = function(){
-		var url = $location.absUrl() + "customers";
+		var url = "/customers";
 		
 		$http.get(url).then(function (response) {
 			$scope.response = response.data
@@ -56,7 +67,7 @@ app.controller('getcontroller', function($scope, $http, $location) {
 	$scope.updateCustomer = function(cust, id){
 		cust.editMode = false;
 		
-		var url = $location.absUrl() + "customers/"+id;
+		var url = "/customers/"+id;
 		
 		var config = {
                 headers : {
@@ -80,7 +91,7 @@ app.controller('getcontroller', function($scope, $http, $location) {
 	}
 	
 	$scope.removeCustomer = function(id){
-		var url = $location.absUrl() + "customers/"+id;
+		var url = "/customers/"+id;
 		
 		var config = {
                 headers : {
