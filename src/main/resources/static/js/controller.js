@@ -1,8 +1,23 @@
-var app = angular.module('app', []);
+var app = angular.module('app', ["ngRoute"]);
 
-app.controller('postcontroller', function($scope, $http, $location) {
+app.config(function($routeProvider) {
+    $routeProvider
+    .when("/", {
+        templateUrl : "index2.html"
+    })
+    .when("/index3", {
+        templateUrl : "index3.html"
+    });
+});
+
+app.controller('postcontroller', function($rootScope, $scope, $http, $location) {
+	//to change the view
+	 $scope.changeView = function(view){
+         $location.path(view); // path not hash
+     }
+	 
 	$scope.submitForm = function(){
-		var url = $location.absUrl() + "customers";
+		var url = "/customers";
 		
 		var config = {
                 headers : {
@@ -30,12 +45,21 @@ app.controller('postcontroller', function($scope, $http, $location) {
 		$scope.address = "";
 		$scope.mail = "";
 		$scope.id = "";
+		
+		//to load the table after adding new customer details
+		$rootScope.$broadcast('topic', 'some message message');
 	}
 });
  
-app.controller('getcontroller', function($scope, $http, $location) {
+app.controller('getcontroller', function($rootScope, $scope, $http, $location) {
+	//to load the table after adding new customer details
+    $scope.$on('topic', function (event, arg) { 
+	    //$scope.receiver = 'got your ' + arg;
+	  $scope.getfunction();
+	});
+	  
 	$scope.getfunction = function(){
-		var url = $location.absUrl() + "customers";
+		var url =  "/customers";
 		
 		$http.get(url).then(function (response) {
 			$scope.response = response.data
@@ -56,7 +80,7 @@ app.controller('getcontroller', function($scope, $http, $location) {
 	$scope.updateCustomer = function(cust, id){
 		cust.editMode = false;
 		
-		var url = $location.absUrl() + "customers/"+id;
+		var url = "/customers/"+id;
 		
 		var config = {
                 headers : {
@@ -80,7 +104,7 @@ app.controller('getcontroller', function($scope, $http, $location) {
 	}
 	
 	$scope.removeCustomer = function(id){
-		var url = $location.absUrl() + "customers/"+id;
+		var url = "/customers/"+id;
 		
 		var config = {
                 headers : {
@@ -98,4 +122,29 @@ app.controller('getcontroller', function($scope, $http, $location) {
 		
 		$scope.getfunction();
 	}
+});
+
+//for sharing service between FirstCtrl and SecondCtrl
+app.factory('theService', function() {  
+    return {
+        thing : {
+            x : 100
+        }
+    };
+});
+
+app.controller('FirstCtrl', function ($scope, $http, $location, theService) {
+	//to change the view
+	 $scope.changeView = function(view){
+         $location.path(view); // path not hash
+     }
+	 
+    $scope.thing = theService.thing;
+    $scope.name = "First Controller";
+    //theService.thing.x = 200;
+});
+
+app.controller('SecondCtrl', function ($scope, theService) {   
+    $scope.someThing = theService.thing; 
+    $scope.name = "Second Controller!";
 });

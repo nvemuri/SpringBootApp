@@ -1,0 +1,152 @@
+<h3 style="color: blue">Http Angularjs With SpringBoot Example1</h3> or 
+
+<div ng-controller="postcontroller">
+	<div ng-click="changeView('index3')">
+	  <h3 style="color: blue"> Click here to Chage View </h3>
+	</div>
+	<form ng-submit="submitForm()" name="myForm" class="form-horizontal">
+
+		<div class="row">
+			<div class="form-group col-md-12">
+				<label class="col-md-2 control-lable" for="id">ID</label>
+				<div class="col-md-7">
+					<input type="text" ng-model="id" id="id"
+						class="username form-control input-sm" placeholder="Enter your id"
+						required />
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="form-group col-md-12">
+				<label class="col-md-2 control-lable" for="uname">First Name</label>
+				<div class="col-md-7">
+					<input type="text" ng-model="firstname" id="uname"
+						class="username form-control input-sm"
+						placeholder="Enter your name" required ng-minlength="3" />
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="form-group col-md-12">
+				<label class="col-md-2 control-lable" for="uname">Last Name</label>
+				<div class="col-md-7">
+					<input type="text" ng-model="lastname" id="uname"
+						class="username form-control input-sm"
+						placeholder="Enter your name" required ng-minlength="3" />
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="form-group col-md-12">
+				<label class="col-md-2 control-lable" for="uname">Mail-ID</label>
+				<div class="col-md-7">
+					<input type="text" ng-model="mail" id="uname"
+						class="username form-control input-sm"
+						placeholder="Enter your name" required ng-minlength="3" />
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="form-group col-md-12">
+				<label class="col-md-2 control-lable" for="salary">Mobile</label>
+				<div class="col-md-7">
+					<input type="text" ng-model="mobileNo" id="salary"
+						class="form-control input-sm" placeholder="Enter your Salary."
+						required ng-pattern="ctrl.onlyNumbers" />
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="form-group col-md-12">
+				<label class="col-md-2 control-lable" for="uname">Address</label>
+				<div class="col-md-7">
+					<input type="text" ng-model="address" id="uname"
+						class="username form-control input-sm"
+						placeholder="Enter your name" required ng-minlength="3" />
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="form-actions floatRight">
+				<input type="submit" value="Save" class="btn btn-primary btn-sm"
+					ng-disabled="myForm.$invalid || myForm.$pristine">
+				<button type="button" ng-click="ctrl.reset()"
+					class="btn btn-warning btn-sm" ng-disabled="myForm.$pristine">Reset
+					Form</button>
+			</div>
+		</div>
+	</form>
+</div>
+
+
+<div class="col-sm-offset-2 col-sm-10" ng-controller="getcontroller"
+	ng-init="getfunction()">
+	<button id="btn-id" type="button" class="btn btn-primary"
+		ng-click="getfunction()">Get All Customers</button>
+
+	<div class="panel-heading">
+		<span class="lead">List of Users </span>
+	</div>
+	<div class="panel-body">
+		<div class="table-responsive">
+			<table class="table table-striped table-bordered">
+				<thead>
+					<tr>
+						<th>FirstName</th>
+						<th>LastName</th>
+						<th>Mail</th>
+						<th>Mobile</th>
+						<th>address</th>
+						<th width="100"></th>
+						<th width="100"></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="cust in response">
+						<td ng-click="editRow(cust)"><span ng-hide="cust.editMode">{{cust.firstname}}</span>
+							<input type="text" name="firstName" ng-show="cust.editMode"
+							class="form-control" ng-model="cust.firstname"
+							placeholder="First Name" required="" /></td>
+						<td ng-click="editRow(cust)"><span ng-hide="cust.editMode">{{cust.lastname}}</span>
+							<input type="text" name="firstName" ng-show="cust.editMode"
+							class="form-control" ng-model="cust.lastname"
+							placeholder="First Name" required="" /></td>
+						<td ng-click="editRow(cust)"><span ng-hide="cust.editMode">{{cust.mail}}</span>
+							<input type="text" name="firstName" ng-show="cust.editMode"
+							class="form-control" ng-model="cust.mail"
+							placeholder="First Name" required="" /></td>
+						<td ng-click="editRow(cust)"><span ng-hide="cust.editMode">{{cust.mobileNo}}</span>
+							<input type="text" name="firstName" ng-show="cust.editMode"
+							class="form-control" ng-model="cust.mobileNo"
+							placeholder="First Name" required="" /></td>
+						<td ng-click="editRow(cust)"><span ng-hide="cust.editMode">{{cust.address}}</span>
+							<input type="text" name="firstName" ng-show="cust.editMode"
+							class="form-control" ng-model="cust.address"
+							placeholder="First Name" required="" /></td>
+						<td><span ng-show="cust.editMode">
+								<button type="button" ng-click="cancleRow(cust)"
+									class="btn btn-success custom-width">Cancel</button>
+								<button type="button" ng-click="updateCustomer(cust, cust.id)"
+									class="btn btn-success custom-width">Update</button>
+						</span> <span ng-hide="cust.editMode">
+								<button type="button" ng-click="editRow(cust)"
+									class="btn btn-success custom-width">Edit</button>
+						</span></td>
+						<td><span ng-show="cust.editMode">
+								<button type="button" class="btn btn-disable custom-width">Remove</button>
+						</span> <span ng-hide="cust.editMode">
+								<button type="button" ng-click="removeCustomer(cust.id)"
+									class="btn btn-danger custom-width">Remove</button></td>
+						</span>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
