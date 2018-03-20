@@ -62,7 +62,14 @@ public class Database {
 	public List<Customer> searchCustomer(String name) {
 
 		List<Customer> list = findAllUsers();
-		List<Customer> customersList = list.stream().filter(customer -> customer.getFirstname().contains(name)).collect(Collectors.toList());
+		
+		// partial text search using streams.
+		List<Customer> customersList = list.stream()
+				   .filter(x -> x.getFirstname().matches("(?i).*"+name+".*"))
+				   .collect(Collectors.toList());
+
+		// exact text search using streams.
+		// List<Customer> customersList = list.stream().filter(customer -> customer.getFirstname().contains(name)).collect(Collectors.toList());
 		return customersList;
 	}
 }
