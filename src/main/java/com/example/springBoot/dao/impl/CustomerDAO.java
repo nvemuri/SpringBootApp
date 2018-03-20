@@ -41,7 +41,7 @@ public class CustomerDAO implements ICustomerDAO{
 	}
 
 	@Override
-	public Customer searchCustomer(String name) {
+	public  List<Customer> searchCustomer(String name) {
 		return database.searchCustomer(name);
 	}
 

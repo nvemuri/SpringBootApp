@@ -1,11 +1,8 @@
 package com.example.springBoot.dao.data;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Component;
@@ -14,58 +11,58 @@ import com.example.springBoot.domain.Customer;
 
 @Component
 public class Database {
-	
+
 	HashMap<String, Customer> customers = new HashMap<>();
-	
-	public  Database() {
-		customers.put("1", new Customer("1","temp1", "temp1l", "temp1@gmail.com", "1343654", "1Atemp"));
-		customers.put("2", new Customer("2","temp2", "temp2l", "temp2@gmail.com", "2343654", "2Atemp"));
-		customers.put("3", new Customer("3","temp3", "temp3l", "temp3@gmail.com", "3343654", "3Atemp"));
-		customers.put("4", new Customer("4","temp4", "temp4l", "temp4@gmail.com", "4343654", "4Atemp"));
+
+	public Database() {
+		customers.put("1", new Customer("1", "temp1", "temp1l", "temp1@gmail.com", "1343654", "1Atemp"));
+		customers.put("2", new Customer("2", "temp2", "temp2l", "temp2@gmail.com", "2343654", "2Atemp"));
+		customers.put("3", new Customer("3", "temp3", "temp3l", "temp3@gmail.com", "3343654", "3Atemp"));
+		customers.put("4", new Customer("4", "temp4", "temp4l", "temp4@gmail.com", "4343654", "4Atemp"));
 	}
-	
-	public List<Customer> findAllUsers() {				
+
+	public List<Customer> findAllUsers() {
 		return new ArrayList<>(customers.values());
 	}
 
 	public void addCustomer(Customer customer) {
-		if(customers.get(customer.getId()) == null)
+		if (customers.get(customer.getId()) == null)
 			customers.put(customer.getId(), customer);
-		else 
-			throw new IllegalArgumentException("Customer already exists with id="+customer.getId());
-		
-		System.out.println("customers size after add="+customers.size());
+		else
+			throw new IllegalArgumentException("Customer already exists with id=" + customer.getId());
+
+		System.out.println("customers size after add=" + customers.size());
 	}
-	
+
 	public Customer getCustomer(String id) {
 		return customers.get(id);
 	}
+
 	public void updateCustomerr(String id, Customer customer) {
-		System.out.println("updateCustomerr id="+id);
+		System.out.println("updateCustomerr id=" + id);
 		System.out.println(customers.get(id));
-		if(customers.get(id) != null) {
+		if (customers.get(id) != null) {
 			customers.put(id, customer);
 			System.out.println("Update customer...");
-		}else {
+		} else {
 			System.out.println("Customer not available...");
 		}
-		
+
 	}
+
 	public void deleteCustomer(String id) {
 		customers.remove(id);
-		System.out.println("customers size after remove="+customers.size());
+		System.out.println("customers size after remove=" + customers.size());
 	}
-	
-	public boolean containsCustomer(final List<Customer> list, final String id){
-	    return list.stream().anyMatch(customer -> customer.getId().equals(id));
+
+	public boolean containsCustomer(final List<Customer> list, final String id) {
+		return list.stream().anyMatch(customer -> customer.getId().equals(id));
 	}
-	
-	public Customer searchCustomer(String name){
-		
-		Customer customer = null;
-		if(customers.get(name) != null){
-			 customer = customers.get(name);
-		}
-		return customer;
+
+	public List<Customer> searchCustomer(String name) {
+
+		List<Customer> list = findAllUsers();
+		List<Customer> customersList = list.stream().filter(customer -> customer.getFirstname().contains(name)).collect(Collectors.toList());
+		return customersList;
 	}
 }

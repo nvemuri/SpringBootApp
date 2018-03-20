@@ -41,13 +41,10 @@ public class CustomerController {
 	
 	//code for getting requested customer
 		@RequestMapping(value = "/searchCustomer", method = RequestMethod.GET)
-		public Customer searchCustomer(@RequestParam("name") String name){
+		public List<Customer> searchCustomer(@RequestParam("name") String name){
 			
-			Customer customer = customerService.searchCustomer(name);
-			if(customer == null){
-				new ResourceNotFoundException("Customer", "id", name);
-			}
-			return customer;
+			List<Customer> customers = customerService.searchCustomer(name);
+			return customers;
 		}
 	
 	//code for adding new customer

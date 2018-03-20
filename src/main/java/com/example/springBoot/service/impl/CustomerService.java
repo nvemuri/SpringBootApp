@@ -41,7 +41,7 @@ public class CustomerService implements ICustomerService{
 	}
 
 	@Override
-	public Customer searchCustomer(String name) {
+	public  List<Customer> searchCustomer(String name) {
 		return customerDAO.searchCustomer(name);
 	}
 
