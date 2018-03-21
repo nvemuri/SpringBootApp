@@ -176,7 +176,6 @@ app.controller('loginController', function($rootScope, $scope, $http, $location,
 };
 });
 
-
 //login functionality service.
 app.factory('LoginService', function() {
 	var admin = 'admin';
