@@ -3,10 +3,13 @@ var app = angular.module('app', ["ngRoute"]);
 app.config(function($routeProvider) {
     $routeProvider
     .when("/", {
-        templateUrl : "index2.html"
-    })
-    .when("/index3", {
         templateUrl : "index3.html"
+    })
+    .when("/login", {
+        templateUrl : "login.html"
+    })
+    .when("/customer", {
+        templateUrl : "customer.html"
     });
 });
 
@@ -148,3 +151,44 @@ app.controller('SecondCtrl', function ($scope, theService) {
     $scope.someThing = theService.thing; 
     $scope.name = "Second Controller!";
 });
+
+
+app.controller('loginController', function ($scope, theService) {   
+    $scope.someThing = theService.thing; 
+    $scope.name = "login Controller!";
+});
+
+
+
+//login functionality controller.
+app.controller('loginController', function($rootScope, $scope, $http, $location, LoginService) {
+	$rootScope.title = "AngularJS Login Sample";
+	$scope.login = function() {
+	if(LoginService.login($scope.username, $scope.password)) {
+		$rootScope.userName = $scope.username;
+		$scope.error = '';
+		$scope.username = '';
+		$scope.password = '';
+		$location.path( "/customer" );
+	} else {
+		$scope.error = "Incorrect username/password !";
+	}   
+};
+});
+
+
+//login functionality service.
+app.factory('LoginService', function() {
+	var admin = 'admin';
+	var pass = 'password';
+	var isAuthenticated = false;
+	return {
+	login : function(username, password) {
+	isAuthenticated = username === admin && password === pass;
+	return isAuthenticated;
+	},
+	isAuthenticated : function() {
+	return isAuthenticated;
+	}
+	};
+	});
